@@ -1,0 +1,2742 @@
+{
+	"info": {
+		"_postman_id": "cadfb43e-f97b-4282-9bef-483e7d92a941",
+		"name": "Dummy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28954442",
+		"_collection_link": "https://universal-rocket-315793.postman.co/workspace/Booking~7daaa01c-98ab-4858-b2ee-f9d465916cba/collection/28954442-cadfb43e-f97b-4282-9bef-483e7d92a941?action=share&source=collection_link&creator=28954442"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "appid верный",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user?created=1",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "created",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "appid неверный",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"APP_ID_NOT_EXIST\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"APP_ID_NOT_EXIST\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310800"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user?created=1",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "created",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"item": [
+				{
+					"name": "Позитивный кейс - все поля заполнены",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"title\": \"mr\",\r\n\"firstName\": \"string\",\r\n\"lastName\": \"string\",\r\n\"gender\": \"male\",\r\n\"email\": \"testrr541@yandex.ru\",\r\n\"dateOfBirth\": \"1/1/1900\",\r\n\"registerDate\": \"string\",\r\n\"phone\": \"string\",\r\n\"picture\": \"url\",\r\n\"location\": {\r\n\"street\": \"string(length: 5-100)\",\r\n\"city\": \"string(length: 2-30)\",\r\n\"state\": \"string(length: 2-30)\",\r\n\"country\": \"string(length: 2-30)\",\r\n\"timezone\": \"string(Valid timezone value ex. +7:00, -1:00)\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. Заполнены только обязательные поля",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"tes333t100@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. firstName - обязательное (length: 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"2\",\r\n        \"email\": \"test3438@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. Только firstName length 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstName\": \"__\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. firstName - обязательное (length: 50)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"тексттексттексттексттексттексттексттексттексттекст\",\r\n        \"email\": \"tes3443t8@yandex.ru\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. firstName - обязательное (length: 51)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"тексттексттексттексттексттексттексттексттексттекст1\",\r\n        \"email\": \"test34348@yandex.ru\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. lastName - обязательное (length: 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"1\",\r\n        \"firstName\": \"22\",\r\n        \"email\": \"test834454@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. Только lastName length 2. ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"__\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. firstName - обязательное (length: 50)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"тексттексттексттексттексттексттексттексттексттекст\",\r\n        \"firstName\": \"222\",\r\n        \"email\": \"test8343@yandex.ru\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. firstName - обязательное (length: 51)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"тексттексттексттексттексттексттексттексттексттекст1\",\r\n        \"firstName\": \"222\",\r\n        \"email\": \"test8@yandex.ru\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. Только email валидный t@t.tt.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n         \"email\": \"t@t.tt\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. email без @",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"1t.tt\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. email 1 символ до @.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"@t.tt\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс.Повторный запрос с той же почтой",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email already used\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Email already used\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"t@t.tt\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. title Только значения \"mr\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"test1043341@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. title Только значения \"ms\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"ms\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"test1343402@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. title любое отличное значение",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"цуцу222\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"test14306@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. gender Только значения \"male\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"test104347@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. gender любое отличное значение",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"gender\",\r\n        \"firstName\": \"__\",\r\n        \"email\": \"test110@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. dateOfBirth string",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"1/1/1900\",\r\n        \"email\": \"test1103434@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. dateOfBirth string(ISO Date - value: 1/1/1900 - now) в отличном формате 10-10-1900",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"email\": \"test1103ee4343ee4242@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. dateOfBirth string(ISO Date - value: 1/1/1900 - now) в месяце больше 12. в формате 20-20-1900",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"20-20-1900\",\r\n        \"email\": \"test1333412@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerDate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"tes343t114@yandex.ru\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. phone length: 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test1133336@yandex.ru\",\r\n        \"phone\": \"+799\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. phone length: 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test1174554@yandex.ru\",\r\n        \"phone\": \"+7999\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. phone length: 20",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test333118@yandex.ru\",\r\n        \"phone\": \"+7999999999999999999\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. phone length: 21",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test118@yandex.ru\",\r\n        \"phone\": \"+7999999999999999999999999999999\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. picture валидный",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test1233e2@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. picture валидный длинный",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test12eet1@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2http://www.ecalc.ch/xcoptercalc.php?ecalc&lang=en&cooling=medium&rotornumber=6&config=flat&frame=900&weight=5000&calc=auw&elevation=500&airtemp=25&qnh=1013&batteries=lipo_10000mah_-_65/100c&chargestate=6&s=6&p=1&esc=max_30a&motor=sunnysky&type=63%7Cx4110s-26%C2%B2&gear=1&propeller=t-motor_cf&diameter=15&pitch=5.5&blades=2\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. street length: 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test123454t4@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"len4\"\r\n            }\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. street length: 100",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test12123245@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"length100length100length100length100length100length100length100length100length100length100length100l\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. street length: 101",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test12343rr3436@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"length100length100length100length100length100length100length100length100length100length100length100l1\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. city: string(length: 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test127222@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"2\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. city: string(length: 2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test12eer8@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"22\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. city: string(length: 30)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"3343rrt@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"название-города30символов33333\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. city: string(length: 31)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test13434trt32@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"название-города30символов333331\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. \"state\": \"string(length: 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test1343rttrtry33@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"25555\",\r\n            \"state\": \"1\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс.timezone: string (Valid timezone value ex. +7:00, -1:00)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test1424t234@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"25555\",\r\n            \"state\": \"3030303030303030303030300322221\",\r\n            \"country\": \"string(length: 2-30)303030303031\",\r\n            \"timezone\": \"+7:00\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. timezone: Not Valid например просто текст",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"BODY_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"BODY_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"A_B_C\",\r\n        \"title\": \"mr\",\r\n        \"gender\": \"male\",\r\n        \"firstName\": \"__\",\r\n        \"dateOfBirth\": \"10-10-1900\",\r\n        \"registerDate\": \"string\",\r\n        \"email\": \"test144345t3443@yandex.ru\",\r\n        \"phone\": \"+7999\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"25555\",\r\n            \"state\": \"3030303030303030303030300322221\",\r\n            \"country\": \"string(length: 2-30)303030303031\",\r\n            \"timezone\": \"string(Valid timezone value ex. +7:00, -1:00)\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/create",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get List",
+			"item": [
+				{
+					"name": "Позитивный кейс.",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user?created=1&Limit=5&Page=0",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "created",
+									"value": "1"
+								},
+								{
+									"key": "Limit",
+									"value": "5"
+								},
+								{
+									"key": "Page",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс.Get List pagin+limit",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user?created=1&Limit=5&Page=1",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "created",
+									"value": "1"
+								},
+								{
+									"key": "Limit",
+									"value": "5"
+								},
+								{
+									"key": "Page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "удаление",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2ced38fdfe871899fbca4",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2ced38fdfe871899fbca4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удалить всех пользователей и повторить запрос",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user?created=1&Limit=5&Page=1",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "created",
+									"value": "1"
+								},
+								{
+									"key": "Limit",
+									"value": "5"
+								},
+								{
+									"key": "Page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by id существующий",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "6534e0dab251e80560310809"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/653521e922f7ec755b5777c5",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"653521e922f7ec755b5777c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Негативный кейс. Get User by id 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PARAMS_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"PARAMS_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "63ea2219d97543c226ec9dbb"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/0",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. Get User by id a",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PARAMS_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"PARAMS_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "63ea2219d97543c226ec9dbb"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/a",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"item": [
+				{
+					"name": "Позитивный кейс. Update User = все поля которые можно обновить",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"mr\",\r\n        \"firstName\": \"__1\",\r\n        \"lastName\": \"A_B_C1\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"gender\": \"male\",\r\n        \"email\": \"test541@yandex.ru\",\r\n        \"dateOfBirth\": \"11-10-1900\",\r\n        \"phone\": \"+79991\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"25555\",\r\n            \"state\": \"3030303030303030303030300322221\",\r\n            \"country\": \"string(length: 2-30)303030303031\",\r\n            \"timezone\": \"string(Valid timezone value ex. +7:00, -1:00)\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2d3b88fdfe8bc489fc26e",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2d3b88fdfe8bc489fc26e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. Update User =парное тестирование по полям которые можно обновить",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"mr\",\r\n        \"firstName\": \"__1\",\r\n        \"lastName\": \"A_B_C1\",\r\n        \"picture\": \"https://i.pinimg.com/originals/e6/9a/49/e69a49ffb26c2546ff39ce56c9421ff9.png\",\r\n        \"gender\": \"male\",\r\n        \"email\": \"test541@yandex.ru\",\r\n        \"dateOfBirth\": \"11-10-1900\",\r\n        \"phone\": \"+79991\",\r\n        \"location\": {\r\n            \"street\": \"leng5\",\r\n            \"city\": \"25555\",\r\n            \"state\": \"3030303030303030303030300322221\",\r\n            \"country\": \"string(length: 2-30)303030303031\",\r\n            \"timezone\": \"string(Valid timezone value ex. +7:00, -1:00)\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2d3b88fdfe8bc489fc26e",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2d3b88fdfe8bc489fc26e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. Update user №2",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"mr\"\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2d3b88fdfe8bc489fc26e",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2d3b88fdfe8bc489fc26e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. Update user №3",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstName\": \"__1\",\r\n        \"gender\": \"male\",\r\n        \"phone\": \"+79991\",\r\n        \"location\": {\r\n            \"city\": \"25555\",\r\n            \"country\": \"string(length: 2-30)303030303031\"\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2d3b88fdfe8bc489fc26e",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2d3b88fdfe8bc489fc26e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. ID = 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"lastName\": \"Halyapin\",\r\n        \"firstName\": \"Vladimir\"\r\n        }"
+						},
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/0",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "удаление",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the app-id header generated by Postman.",
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/65f2d3b88fdfe8bc489fc26e",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"65f2d3b88fdfe8bc489fc26e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. Delete User удаление рандомного (не существующего)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PARAMS_NOT_VALID\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"PARAMS_NOT_VALID\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "app-id",
+								"value": "65f179de165ac5cd4010271c"
+							}
+						],
+						"url": {
+							"raw": "https://dummyapi.io/data/v1/user/00001",
+							"protocol": "https",
+							"host": [
+								"dummyapi",
+								"io"
+							],
+							"path": [
+								"data",
+								"v1",
+								"user",
+								"00001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "65f179de165ac5cd4010271c",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "app-id",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

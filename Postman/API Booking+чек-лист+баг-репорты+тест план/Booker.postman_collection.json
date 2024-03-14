@@ -1,0 +1,3487 @@
+{
+	"info": {
+		"_postman_id": "2e1804d3-c828-4c12-9a12-aba93c61d874",
+		"name": "Booker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28954442",
+		"_collection_link": "https://universal-rocket-315793.postman.co/workspace/Booking~7daaa01c-98ab-4858-b2ee-f9d465916cba/collection/28954442-2e1804d3-c828-4c12-9a12-aba93c61d874?source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " обязательность поля username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "обязательность поля password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Заголовок Content-Type с значением не application/json, например (text/plain)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "пустой username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"\",\r\n    \"password\" : \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "пустой password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный пароль отличный от password123",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/auth",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetBookingIds",
+			"item": [
+				{
+					"name": "Проверка на отсутствие необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка необязательного параметра firstname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Sally\",\r\n    \"lastname\": \"Jackson\",\r\n    \"totalprice\": 951,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-04-06\",\r\n        \"checkout\": \"2023-06-12\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?firstname=Sally",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "Sally"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка необязательного параметра lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Sally\",\r\n    \"lastname\": \"Jackson\",\r\n    \"totalprice\": 951,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n        \"checkin\": \"2022-04-06\",\r\n        \"checkout\": \"2023-06-12\"\r\n    },\r\n    \"additionalneeds\": \"Breakfast\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?lastname=Jackson",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "lastname",
+									"value": "Jackson"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка необязательного параметра checkin на равенство установленной дате заезда..",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?checkin=2017-02-02",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "checkin",
+									"value": "2017-02-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Парная проверка необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?firstname=Sally&lastname=Jackson",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "Sally"
+								},
+								{
+									"key": "lastname",
+									"value": "Jackson"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkin+ checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?checkin=2018-09-16&checkout=2018-11-07",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "checkin",
+									"value": "2018-09-16"
+								},
+								{
+									"key": "checkout",
+									"value": "2018-11-07"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка одновременно всех фильтров 4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"bookingid\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"bookingid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?firstname=Sally&lastname=Jackson&checkin=2022-04-06&checkout=2023-06-12",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "Sally"
+								},
+								{
+									"key": "lastname",
+									"value": "Jackson"
+								},
+								{
+									"key": "checkin",
+									"value": "2022-04-06"
+								},
+								{
+									"key": "checkout",
+									"value": "2023-06-12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неправильные значение в фильтрах ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"[]\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"[]\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking?lastname=Jack",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "lastname",
+									"value": "Jack"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetBooking ID",
+			"item": [
+				{
+					"name": "booking by Id json",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "application/xml",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/0",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11111111111111111111111111111111111",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/11111111111111111111111111111111111",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"11111111111111111111111111111111111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/-1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "а",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/а",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"а"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "*",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка на статус код 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/ *",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								" *"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Booking",
+			"item": [
+				{
+					"name": "Позитивный Create booking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный Create booking XML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный Create booking URLencoded",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstname",
+									"value": "Jim",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Brown",
+									"type": "text"
+								},
+								{
+									"key": "totalprice",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "depositpaid",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkin]",
+									"value": "2018-01-01",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkout]",
+									"value": "2018-01-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -firstname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -totalprice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -depositpaid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -checkin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -bookingdates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking -additionalneeds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -firstname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -totalprice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -depositpaid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -checkin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -bookingdates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный Create booking XML -additionalneeds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>Jim</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/16",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateBooking",
+			"item": [
+				{
+					"name": "Позитивный JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный XML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. URLencoded.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Jim\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Jim\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstname",
+									"value": "Jim",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Brown",
+									"type": "text"
+								},
+								{
+									"key": "totalprice",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "depositpaid",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkin]",
+									"value": "2018-01-01",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkout]",
+									"value": "2018-01-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check ID Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. JSON.только авторизации без куки. -Cookie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"James\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"James\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. без авторизации и без куки. -Cookie - auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. JSON.только куки без авторизации . -Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"James\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"James\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. - firstname.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. - lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. -totalprice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. -depositpaid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. -checkin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. - checkout.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. - bookingdates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. JSON. - additionalneeds.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"James\",\r\n    \"lastname\" : \"Brown\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML -firstname.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML  - lastname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML -totalprice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML. -depositpaid.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>222</totalprice>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML. -checkin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML. -checkout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n    </bookingdates>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML. -bookingdates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <additionalneeds>Breakfast</additionalneeds>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Негативный кейс. XML. -additionalneeds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n    <totalprice>111</totalprice>\r\n    <depositpaid>true</depositpaid>\r\n    <bookingdates>\r\n      <checkin>2018-01-01</checkin>\r\n      <checkout>2019-01-01</checkout>\r\n    </bookingdates>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PartialUpdateBooking",
+			"item": [
+				{
+					"name": "все поля сразу.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim1\",\r\n    \"lastname\" : \"Brown1\",\r\n    \"totalprice\" : 1111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2018-01-01\",\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast1\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс (1й). JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim1\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс (7й). JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim1\",\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkout\" : \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast1\"\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс (15й). JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\" : \"Jim1\",\r\n    \"lastname\" : \"Brown1\",\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkout\" : \"2019-01-01\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Позитивный кейс. XML.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46cGFzc3dvcmQxMjM="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\r\n    <firstname>James</firstname>\r\n    <lastname>Brown</lastname>\r\n  </booking>"
+						},
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/1",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "Auth+Delete Cookie.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/12",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete old Cookie.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=92701c831ea3dba"
+							}
+						],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/15",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no auth no cookie.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Проверка кода ответа на ошибку 4xx\", function () {\r",
+									"    var statusCode = pm.response.code;\r",
+									"    pm.expect(statusCode).to.be.within(400, 499); // Проверка, что код ответа начинается с 4\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://restful-booker.onrender.com/booking/16",
+							"protocol": "https",
+							"host": [
+								"restful-booker",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"booking",
+								"16"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,2327 @@
+{
+	"id": "1c0b0f54-6401-45f5-98f4-b6682c4cbf50",
+	"name": "Booker",
+	"timestamp": "2024-03-08T12:23:38.332Z",
+	"collection_id": "28954442-2e1804d3-c828-4c12-9a12-aba93c61d874",
+	"folder_id": 0,
+	"environment_id": "28954442-65fffa60-3885-402f-97fa-127941e5ba32",
+	"totalPass": 49,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-03-08T12:23:11.076Z",
+	"totalFail": 32,
+	"results": [
+		{
+			"id": "0b2738a4-e06d-4990-be8c-d09cc3ddc8f9",
+			"name": "auth",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 629,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				629
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "bdc1c826-f1ec-44a1-80b7-53e9d087e08d",
+			"name": " обязательность поля username",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 244,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "b17d2e64-b8f4-4ddd-aad3-eaf83f183749",
+			"name": "обязательность поля password",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 231,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "c3b6c02c-8448-4e08-9805-9212fbb9a806",
+			"name": "Заголовок Content-Type с значением не application/json, например (text/plain)",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 242,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				242
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "39ced41a-3e6a-4bde-98ce-f8bc04848897",
+			"name": "пустой username",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 249,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				249
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "7c3cf672-bfb4-49f2-ae8b-370d53dfa400",
+			"name": "пустой password",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "e5165113-e90a-48e1-b790-4d8d787f4d83",
+			"name": "Неверный пароль отличный от password123",
+			"url": "https://restful-booker.onrender.com/auth",
+			"time": 231,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 400": false
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Status code is 400": false
+				}
+			]
+		},
+		{
+			"id": "910c907c-8e1f-4abb-a57a-05578958a354",
+			"name": "Проверка на отсутствие необязательных параметров",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 222,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				222
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a0ac5029-8ab6-468d-8cb6-c1c7fef5c421",
+			"name": "Проверка необязательного параметра firstname",
+			"url": "https://restful-booker.onrender.com/booking?firstname=Sally",
+			"time": 242,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				242
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": false
+				}
+			]
+		},
+		{
+			"id": "73bab065-e396-4ce8-b850-755fb18cf9e6",
+			"name": "Проверка необязательного параметра lastname",
+			"url": "https://restful-booker.onrender.com/booking?lastname=Jackson",
+			"time": 309,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				309
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": true
+				}
+			]
+		},
+		{
+			"id": "1c9b535f-b8b2-48ea-9eed-6ad89b50c645",
+			"name": "Проверка необязательного параметра checkin на равенство установленной дате заезда..",
+			"url": "https://restful-booker.onrender.com/booking?checkin=2017-02-02",
+			"time": 241,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				241
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": true
+				}
+			]
+		},
+		{
+			"id": "8d534ec6-ad40-4c2f-887b-ab84f3d00c6a",
+			"name": "Парная проверка необязательных параметров",
+			"url": "https://restful-booker.onrender.com/booking?firstname=Sally&lastname=Jackson",
+			"time": 235,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				235
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": false
+				}
+			]
+		},
+		{
+			"id": "051c0333-6921-419c-85e3-80bca85c5508",
+			"name": "checkin+ checkout",
+			"url": "https://restful-booker.onrender.com/booking?checkin=2018-09-16&checkout=2018-11-07",
+			"time": 239,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				239
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": false
+				}
+			]
+		},
+		{
+			"id": "9f6bd0eb-00f3-4408-b4c7-a853aefe64e3",
+			"name": "Проверка одновременно всех фильтров 4",
+			"url": "https://restful-booker.onrender.com/booking?firstname=Sally&lastname=Jackson&checkin=2022-04-06&checkout=2023-06-12",
+			"time": 238,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"bookingid": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"bookingid": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				238
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"bookingid": false
+				}
+			]
+		},
+		{
+			"id": "3ccb089e-20d5-4de3-82de-9790fc39e92b",
+			"name": "Неправильные значение в фильтрах ",
+			"url": "https://restful-booker.onrender.com/booking?lastname=Jack",
+			"time": 330,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Проверка на статус код 404": false,
+				"[]": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 0,
+					"fail": 1
+				},
+				"[]": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				330
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": false,
+					"[]": true
+				}
+			]
+		},
+		{
+			"id": "e477c4a7-363b-46d6-a8ec-bade22a94277",
+			"name": "booking by Id json",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 241,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				241
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8e8d078d-6879-4877-80fd-f10a2b2e96f0",
+			"name": "application/xml",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 234,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5e75915c-6368-4506-9d7f-d4e6b686df33",
+			"name": "0",
+			"url": "https://restful-booker.onrender.com/booking/0",
+			"time": 234,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Проверка на статус код 404": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": true
+				}
+			]
+		},
+		{
+			"id": "67c695fa-548b-4b73-8bb9-6bf982e5e140",
+			"name": "11111111111111111111111111111111111",
+			"url": "https://restful-booker.onrender.com/booking/11111111111111111111111111111111111",
+			"time": 230,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Проверка на статус код 404": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				230
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": true
+				}
+			]
+		},
+		{
+			"id": "9374ab7d-9a96-4ef3-9a33-c0016af654df",
+			"name": "-1",
+			"url": "https://restful-booker.onrender.com/booking/-1",
+			"time": 234,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Проверка на статус код 404": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": true
+				}
+			]
+		},
+		{
+			"id": "acb92501-9d50-4253-9997-83214fef5c5e",
+			"name": "а",
+			"url": "https://restful-booker.onrender.com/booking/а",
+			"time": 233,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Проверка на статус код 404": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": true
+				}
+			]
+		},
+		{
+			"id": "b49be13b-60f3-491c-a6e5-992d28f2843f",
+			"name": "*",
+			"url": "https://restful-booker.onrender.com/booking/ *",
+			"time": 245,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Проверка на статус код 404": true
+			},
+			"testPassFailCounts": {
+				"Проверка на статус код 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				245
+			],
+			"allTests": [
+				{
+					"Проверка на статус код 404": true
+				}
+			]
+		},
+		{
+			"id": "5de7b9f6-4e0d-4940-bf6c-c1833822e37d",
+			"name": "Позитивный Create booking",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 233,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d572d214-8de4-483f-8e49-117beb13058f",
+			"name": "Позитивный Create booking XML",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 245,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				245
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f9bce090-72b3-4d02-ae9f-72ec6c8ef7a8",
+			"name": "Позитивный Create booking URLencoded",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 225,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				225
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "32c25043-6bc2-480e-afc1-6d7a0d3b55df",
+			"name": "Негативный Create booking -firstname",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 228,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "be94a0ad-ac16-4145-b6d1-d3f77b11732b",
+			"name": "Негативный Create booking -lastname",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 237,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				237
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "1b3b54be-4956-48b5-a538-fb70108e6534",
+			"name": "Негативный Create booking -totalprice",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 228,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "ee043340-84c0-4ed7-8071-6440083c877f",
+			"name": "Негативный Create booking -depositpaid",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 244,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				244
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "25eee7ef-c535-47a2-a4dc-ca27adac19db",
+			"name": "Негативный Create booking -checkin",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 218,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "37309181-1a72-4d44-93bf-1f0445c8f312",
+			"name": "Негативный Create booking -checkout",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 632,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				632
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "3094311a-fa4e-4e73-ab22-5794b3a04285",
+			"name": "Негативный Create booking -bookingdates",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 220,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "7c924f74-db2d-4c04-93a6-e3758f5390bf",
+			"name": "Негативный Create booking -additionalneeds",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 213,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				213
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "7da5ec15-139b-4036-8cee-bbbeb475924e",
+			"name": "Негативный Create booking XML -firstname",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 234,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "e2e4f493-da45-4577-8e31-93e4e35bcb65",
+			"name": "Негативный Create booking XML -lastname",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 232,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "c40227a9-fcb5-4890-91b3-44917f36f727",
+			"name": "Негативный Create booking XML -totalprice",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 627,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				627
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "1f318288-252b-46a5-bba6-9bf07cff1422",
+			"name": "Негативный Create booking XML -depositpaid",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 215,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				215
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "c2f09c39-f5b5-449d-ac82-01f79417fdbd",
+			"name": "Негативный Create booking XML -checkin",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 234,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				234
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "30156887-6687-4ace-8835-ad3fe2e69f40",
+			"name": "Негативный Create booking XML -checkout",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 223,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				223
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "499ff6a3-98af-4a82-921c-961a8e7e105d",
+			"name": "Негативный Create booking XML -bookingdates",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 236,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "7f4ccf9a-dd4c-47b0-9fe7-ff055a153b46",
+			"name": "Негативный Create booking XML -additionalneeds",
+			"url": "https://restful-booker.onrender.com/booking",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "06fdf775-d8cb-4aab-8cd1-386ad8ed2e9a",
+			"name": "check ID",
+			"url": "https://restful-booker.onrender.com/booking/16",
+			"time": 215,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				215
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a1c4b2fd-9652-4380-b9a4-9ae7321bbb77",
+			"name": "Позитивный JSON",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 233,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				233
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "66626da3-5abe-4ba8-bb62-ab23ebd71477",
+			"name": "Позитивный XML",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 210,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "c9aa1826-b203-4c7d-9e96-0d15ad77ea0b",
+			"name": "Позитивный кейс. URLencoded.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 226,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Jim": false
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Jim": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				226
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Jim": false
+				}
+			]
+		},
+		{
+			"id": "ccb8fbb0-e1db-46c8-b6e6-8c4ad73d9e0f",
+			"name": "check ID Copy",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				220
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3a39ed63-2e6b-4f04-be5a-640313370c30",
+			"name": "Позитивный кейс. JSON.только авторизации без куки. -Cookie",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 231,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"James": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"James": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"James": true
+				}
+			]
+		},
+		{
+			"id": "ad8bd6f0-a676-466c-9fb4-c9a55b2b8035",
+			"name": "Негативный кейс. JSON. без авторизации и без куки. -Cookie - auth",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 232,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Status code is 403": true
+			},
+			"testPassFailCounts": {
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 403": true
+				}
+			]
+		},
+		{
+			"id": "2f372a9d-7663-495f-b1e0-acc3190197a7",
+			"name": "Позитивный кейс. JSON.только куки без авторизации . -Authorization",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 226,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"James": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"James": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				226
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"James": true
+				}
+			]
+		},
+		{
+			"id": "1c706faa-da37-4dea-a9c8-6ce2a35d615a",
+			"name": "Негативный кейс. JSON. - firstname.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 229,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				229
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "257a3604-6c8f-40b5-8bc7-b6e141e187d4",
+			"name": "Негативный кейс. JSON. - lastname",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 221,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				221
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "a401f200-7ed4-446e-8411-e236e77c388b",
+			"name": "Негативный кейс. JSON. -totalprice",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 236,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "7e7b31d6-6cc3-4abc-a4a2-bba8153c4670",
+			"name": "Негативный кейс. JSON. -depositpaid",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 224,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				224
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "fc1d21ca-1852-4103-8dde-c4252a6a161a",
+			"name": "Негативный кейс. JSON. -checkin",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 622,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				622
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "319ff0a6-e328-4556-8d20-b8f038b19d32",
+			"name": "Негативный кейс. JSON. - checkout.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 239,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				239
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "194709c2-4303-4956-b257-91a41d2bb769",
+			"name": "Негативный кейс. JSON. - bookingdates",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 227,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "121f9668-53a8-4f01-a59b-eec777dafc10",
+			"name": "Негативный кейс. JSON. - additionalneeds.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 216,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "24b6fe94-fdd0-43db-ad6e-97ba4cd3b3dd",
+			"name": "Негативный кейс. XML -firstname.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 227,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "7312a140-475b-4842-bc22-c358e870e8e9",
+			"name": "Негативный кейс. XML  - lastname",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 231,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "5ed5803c-eccd-454b-9e1f-0a15ded9dc86",
+			"name": "Негативный кейс. XML -totalprice",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 232,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "60701a98-4984-4559-93e0-74ec800e4f6c",
+			"name": "Негативный кейс. XML. -depositpaid.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 210,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "3c81a3f7-1e1d-4631-9f17-118262fd64d7",
+			"name": "Негативный кейс. XML. -checkin",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 235,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				235
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "ca198181-307f-460f-af28-f85e2ac0558d",
+			"name": "Негативный кейс. XML. -checkout",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 210,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				210
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "45ebbd71-9994-4706-b83e-1f07cc28e9c6",
+			"name": "Негативный кейс. XML. -bookingdates",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 231,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				231
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		},
+		{
+			"id": "fb9e8ddf-67cc-4968-964c-597c05eae451",
+			"name": "Негативный кейс. XML. -additionalneeds",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 218,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": false
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": false
+				}
+			]
+		},
+		{
+			"id": "1191208c-79fd-414e-99de-1daed274cd42",
+			"name": "все поля сразу.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a67798f7-efb8-4ddc-bee6-c5d1977acd23",
+			"name": "Позитивный кейс (1й). JSON",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 214,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				214
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "97c30468-2411-4e9c-8a57-497e4290c02b",
+			"name": "Позитивный кейс (7й). JSON",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 209,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7455e701-5788-4a99-a0c9-d6d44400014c",
+			"name": "Позитивный кейс (15й). JSON",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "87aa78c4-5340-424e-9222-975f97608d4f",
+			"name": "Позитивный кейс. XML.",
+			"url": "https://restful-booker.onrender.com/booking/1",
+			"time": 236,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2335cf05-bc2a-4541-8941-d3b3030470dd",
+			"name": "Auth+Delete Cookie.",
+			"url": "https://restful-booker.onrender.com/booking/12",
+			"time": 236,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {
+				"Status code is 204": false
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Status code is 204": false
+				}
+			]
+		},
+		{
+			"id": "9fcd8f16-9919-40c5-9dc0-916c13de856e",
+			"name": "Delete old Cookie.",
+			"url": "https://restful-booker.onrender.com/booking/15",
+			"time": 227,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 204": false
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Status code is 204": false
+				}
+			]
+		},
+		{
+			"id": "ff8af2f1-0e96-49d8-8ad3-c3bb18605043",
+			"name": "no auth no cookie.",
+			"url": "https://restful-booker.onrender.com/booking/16",
+			"time": 227,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Проверка кода ответа на ошибку 4xx": true
+			},
+			"testPassFailCounts": {
+				"Проверка кода ответа на ошибку 4xx": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				227
+			],
+			"allTests": [
+				{
+					"Проверка кода ответа на ошибку 4xx": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 18523,
+	"collection": {
+		"requests": [
+			{
+				"id": "0b2738a4-e06d-4990-be8c-d09cc3ddc8f9",
+				"method": "POST"
+			},
+			{
+				"id": "bdc1c826-f1ec-44a1-80b7-53e9d087e08d",
+				"method": "POST"
+			},
+			{
+				"id": "b17d2e64-b8f4-4ddd-aad3-eaf83f183749",
+				"method": "POST"
+			},
+			{
+				"id": "c3b6c02c-8448-4e08-9805-9212fbb9a806",
+				"method": "POST"
+			},
+			{
+				"id": "39ced41a-3e6a-4bde-98ce-f8bc04848897",
+				"method": "POST"
+			},
+			{
+				"id": "7c3cf672-bfb4-49f2-ae8b-370d53dfa400",
+				"method": "POST"
+			},
+			{
+				"id": "e5165113-e90a-48e1-b790-4d8d787f4d83",
+				"method": "POST"
+			},
+			{
+				"id": "910c907c-8e1f-4abb-a57a-05578958a354",
+				"method": "GET"
+			},
+			{
+				"id": "a0ac5029-8ab6-468d-8cb6-c1c7fef5c421",
+				"method": "GET"
+			},
+			{
+				"id": "73bab065-e396-4ce8-b850-755fb18cf9e6",
+				"method": "GET"
+			},
+			{
+				"id": "1c9b535f-b8b2-48ea-9eed-6ad89b50c645",
+				"method": "GET"
+			},
+			{
+				"id": "8d534ec6-ad40-4c2f-887b-ab84f3d00c6a",
+				"method": "GET"
+			},
+			{
+				"id": "051c0333-6921-419c-85e3-80bca85c5508",
+				"method": "GET"
+			},
+			{
+				"id": "9f6bd0eb-00f3-4408-b4c7-a853aefe64e3",
+				"method": "GET"
+			},
+			{
+				"id": "3ccb089e-20d5-4de3-82de-9790fc39e92b",
+				"method": "GET"
+			},
+			{
+				"id": "e477c4a7-363b-46d6-a8ec-bade22a94277",
+				"method": "GET"
+			},
+			{
+				"id": "8e8d078d-6879-4877-80fd-f10a2b2e96f0",
+				"method": "GET"
+			},
+			{
+				"id": "5e75915c-6368-4506-9d7f-d4e6b686df33",
+				"method": "GET"
+			},
+			{
+				"id": "67c695fa-548b-4b73-8bb9-6bf982e5e140",
+				"method": "GET"
+			},
+			{
+				"id": "9374ab7d-9a96-4ef3-9a33-c0016af654df",
+				"method": "GET"
+			},
+			{
+				"id": "acb92501-9d50-4253-9997-83214fef5c5e",
+				"method": "GET"
+			},
+			{
+				"id": "b49be13b-60f3-491c-a6e5-992d28f2843f",
+				"method": "GET"
+			},
+			{
+				"id": "5de7b9f6-4e0d-4940-bf6c-c1833822e37d",
+				"method": "POST"
+			},
+			{
+				"id": "d572d214-8de4-483f-8e49-117beb13058f",
+				"method": "POST"
+			},
+			{
+				"id": "f9bce090-72b3-4d02-ae9f-72ec6c8ef7a8",
+				"method": "POST"
+			},
+			{
+				"id": "32c25043-6bc2-480e-afc1-6d7a0d3b55df",
+				"method": "POST"
+			},
+			{
+				"id": "be94a0ad-ac16-4145-b6d1-d3f77b11732b",
+				"method": "POST"
+			},
+			{
+				"id": "1b3b54be-4956-48b5-a538-fb70108e6534",
+				"method": "POST"
+			},
+			{
+				"id": "ee043340-84c0-4ed7-8071-6440083c877f",
+				"method": "POST"
+			},
+			{
+				"id": "25eee7ef-c535-47a2-a4dc-ca27adac19db",
+				"method": "POST"
+			},
+			{
+				"id": "37309181-1a72-4d44-93bf-1f0445c8f312",
+				"method": "POST"
+			},
+			{
+				"id": "3094311a-fa4e-4e73-ab22-5794b3a04285",
+				"method": "POST"
+			},
+			{
+				"id": "7c924f74-db2d-4c04-93a6-e3758f5390bf",
+				"method": "POST"
+			},
+			{
+				"id": "7da5ec15-139b-4036-8cee-bbbeb475924e",
+				"method": "POST"
+			},
+			{
+				"id": "e2e4f493-da45-4577-8e31-93e4e35bcb65",
+				"method": "POST"
+			},
+			{
+				"id": "c40227a9-fcb5-4890-91b3-44917f36f727",
+				"method": "POST"
+			},
+			{
+				"id": "1f318288-252b-46a5-bba6-9bf07cff1422",
+				"method": "POST"
+			},
+			{
+				"id": "c2f09c39-f5b5-449d-ac82-01f79417fdbd",
+				"method": "POST"
+			},
+			{
+				"id": "30156887-6687-4ace-8835-ad3fe2e69f40",
+				"method": "POST"
+			},
+			{
+				"id": "499ff6a3-98af-4a82-921c-961a8e7e105d",
+				"method": "POST"
+			},
+			{
+				"id": "7f4ccf9a-dd4c-47b0-9fe7-ff055a153b46",
+				"method": "POST"
+			},
+			{
+				"id": "06fdf775-d8cb-4aab-8cd1-386ad8ed2e9a",
+				"method": "GET"
+			},
+			{
+				"id": "a1c4b2fd-9652-4380-b9a4-9ae7321bbb77",
+				"method": "PUT"
+			},
+			{
+				"id": "66626da3-5abe-4ba8-bb62-ab23ebd71477",
+				"method": "PUT"
+			},
+			{
+				"id": "c9aa1826-b203-4c7d-9e96-0d15ad77ea0b",
+				"method": "PUT"
+			},
+			{
+				"id": "ccb8fbb0-e1db-46c8-b6e6-8c4ad73d9e0f",
+				"method": "GET"
+			},
+			{
+				"id": "3a39ed63-2e6b-4f04-be5a-640313370c30",
+				"method": "PUT"
+			},
+			{
+				"id": "ad8bd6f0-a676-466c-9fb4-c9a55b2b8035",
+				"method": "PUT"
+			},
+			{
+				"id": "2f372a9d-7663-495f-b1e0-acc3190197a7",
+				"method": "PUT"
+			},
+			{
+				"id": "1c706faa-da37-4dea-a9c8-6ce2a35d615a",
+				"method": "PUT"
+			},
+			{
+				"id": "257a3604-6c8f-40b5-8bc7-b6e141e187d4",
+				"method": "PUT"
+			},
+			{
+				"id": "a401f200-7ed4-446e-8411-e236e77c388b",
+				"method": "PUT"
+			},
+			{
+				"id": "7e7b31d6-6cc3-4abc-a4a2-bba8153c4670",
+				"method": "PUT"
+			},
+			{
+				"id": "fc1d21ca-1852-4103-8dde-c4252a6a161a",
+				"method": "PUT"
+			},
+			{
+				"id": "319ff0a6-e328-4556-8d20-b8f038b19d32",
+				"method": "PUT"
+			},
+			{
+				"id": "194709c2-4303-4956-b257-91a41d2bb769",
+				"method": "PUT"
+			},
+			{
+				"id": "121f9668-53a8-4f01-a59b-eec777dafc10",
+				"method": "PUT"
+			},
+			{
+				"id": "24b6fe94-fdd0-43db-ad6e-97ba4cd3b3dd",
+				"method": "PUT"
+			},
+			{
+				"id": "7312a140-475b-4842-bc22-c358e870e8e9",
+				"method": "PUT"
+			},
+			{
+				"id": "5ed5803c-eccd-454b-9e1f-0a15ded9dc86",
+				"method": "PUT"
+			},
+			{
+				"id": "60701a98-4984-4559-93e0-74ec800e4f6c",
+				"method": "PUT"
+			},
+			{
+				"id": "3c81a3f7-1e1d-4631-9f17-118262fd64d7",
+				"method": "PUT"
+			},
+			{
+				"id": "ca198181-307f-460f-af28-f85e2ac0558d",
+				"method": "PUT"
+			},
+			{
+				"id": "45ebbd71-9994-4706-b83e-1f07cc28e9c6",
+				"method": "PUT"
+			},
+			{
+				"id": "fb9e8ddf-67cc-4968-964c-597c05eae451",
+				"method": "PUT"
+			},
+			{
+				"id": "1191208c-79fd-414e-99de-1daed274cd42",
+				"method": "PATCH"
+			},
+			{
+				"id": "a67798f7-efb8-4ddc-bee6-c5d1977acd23",
+				"method": "PATCH"
+			},
+			{
+				"id": "97c30468-2411-4e9c-8a57-497e4290c02b",
+				"method": "PATCH"
+			},
+			{
+				"id": "7455e701-5788-4a99-a0c9-d6d44400014c",
+				"method": "PATCH"
+			},
+			{
+				"id": "87aa78c4-5340-424e-9222-975f97608d4f",
+				"method": "PATCH"
+			},
+			{
+				"id": "2335cf05-bc2a-4541-8941-d3b3030470dd",
+				"method": "DELETE"
+			},
+			{
+				"id": "9fcd8f16-9919-40c5-9dc0-916c13de856e",
+				"method": "DELETE"
+			},
+			{
+				"id": "ff8af2f1-0e96-49d8-8ad3-c3bb18605043",
+				"method": "DELETE"
+			}
+		]
+	}
+}
